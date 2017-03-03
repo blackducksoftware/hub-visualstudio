@@ -8,11 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BlackDuckHub.VisualStudio.Properties
-{
+namespace BlackDuckHub.VisualStudio.Properties {
     using System;
-
-
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,312 +22,247 @@ namespace BlackDuckHub.VisualStudio.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if (object.ReferenceEquals(resourceMan, null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BlackDuckHub.VisualStudio.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Package.
         /// </summary>
-        internal static string ColumnPackage
-        {
-            get
-            {
+        internal static string ColumnPackage {
+            get {
                 return ResourceManager.GetString("ColumnPackage", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Version.
         /// </summary>
-        internal static string ColumnVersion
-        {
-            get
-            {
+        internal static string ColumnVersion {
+            get {
                 return ResourceManager.GetString("ColumnVersion", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to packages.config.
         /// </summary>
-        internal static string FilePackage
-        {
-            get
-            {
+        internal static string FilePackage {
+            get {
                 return ResourceManager.GetString("FilePackage", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to nuget.
         /// </summary>
-        internal static string Forge
-        {
-            get
-            {
+        internal static string Forge {
+            get {
                 return ResourceManager.GetString("Forge", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to All.
         /// </summary>
-        internal static string ItemAll
-        {
-            get
-            {
+        internal static string ItemAll {
+            get {
                 return ResourceManager.GetString("ItemAll", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to View in Hub.
         /// </summary>
-        internal static string LinkView
-        {
-            get
-            {
+        internal static string LinkView {
+            get {
                 return ResourceManager.GetString("LinkView", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to password.
         /// </summary>
-        internal static string LoginPassword
-        {
-            get
-            {
+        internal static string LoginPassword {
+            get {
                 return ResourceManager.GetString("LoginPassword", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to j_spring_security_check.
         /// </summary>
-        internal static string LoginSecurity
-        {
-            get
-            {
+        internal static string LoginSecurity {
+            get {
                 return ResourceManager.GetString("LoginSecurity", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to username.
         /// </summary>
-        internal static string LoginUsername
-        {
-            get
-            {
+        internal static string LoginUsername {
+            get {
                 return ResourceManager.GetString("LoginUsername", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Please ensure you&apos;ve entered the Black Duck Hub settings.
         /// </summary>
-        internal static string MesageNoHubSettings
-        {
-            get
-            {
+        internal static string MesageNoHubSettings {
+            get {
                 return ResourceManager.GetString("MesageNoHubSettings", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Connection Successful.
         /// </summary>
-        internal static string MessageConnectionSuccessful
-        {
-            get
-            {
+        internal static string MessageConnectionSuccessful {
+            get {
                 return ResourceManager.GetString("MessageConnectionSuccessful", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Could not establish connection to the Black Duck Hub.
         /// </summary>
-        internal static string MessageConnectionUnsuccessful
-        {
-            get
-            {
+        internal static string MessageConnectionUnsuccessful {
+            get {
                 return ResourceManager.GetString("MessageConnectionUnsuccessful", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Black Duck Hub Settings Saved Successfully.
         /// </summary>
-        internal static string MessageSettingsSaved
-        {
-            get
-            {
+        internal static string MessageSettingsSaved {
+            get {
                 return ResourceManager.GetString("MessageSettingsSaved", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Executing Black Duck Hub Scan....
         /// </summary>
-        internal static string OutputExecutingScan
-        {
-            get
-            {
+        internal static string OutputExecutingScan {
+            get {
                 return ResourceManager.GetString("OutputExecutingScan", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Failed to write to the Black Duck Hub window.
         /// </summary>
-        internal static string OutputFailed
-        {
-            get
-            {
+        internal static string OutputFailed {
+            get {
                 return ResourceManager.GetString("OutputFailed", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Black Duck Hub.
         /// </summary>
-        internal static string PaneTitle
-        {
-            get
-            {
+        internal static string PaneTitle {
+            get {
                 return ResourceManager.GetString("PaneTitle", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Complete.
         /// </summary>
-        internal static string StatusComplete
-        {
-            get
-            {
+        internal static string StatusComplete {
+            get {
                 return ResourceManager.GetString("StatusComplete", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Running....
         /// </summary>
-        internal static string StatusRunning
-        {
-            get
-            {
+        internal static string StatusRunning {
+            get {
                 return ResourceManager.GetString("StatusRunning", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to application/x-www-form-urlencoded.
         /// </summary>
-        internal static string StringContentType
-        {
-            get
-            {
+        internal static string StringContentType {
+            get {
                 return ResourceManager.GetString("StringContentType", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to api/components/.
         /// </summary>
-        internal static string UrlApiComponents
-        {
-            get
-            {
+        internal static string UrlApiComponents {
+            get {
                 return ResourceManager.GetString("UrlApiComponents", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to api/vulnerabilities/.
         /// </summary>
-        internal static string UrlApiVulnerabilities
-        {
-            get
-            {
+        internal static string UrlApiVulnerabilities {
+            get {
                 return ResourceManager.GetString("UrlApiVulnerabilities", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to #projects/id:.
-        /// </summary>
-        internal static string UrlProjectsId
-        {
-            get
-            {
-                return ResourceManager.GetString("UrlProjectsId", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to vulnerabilities.
         /// </summary>
-        internal static string UrlVulnerabilities
-        {
-            get
-            {
+        internal static string UrlVulnerabilities {
+            get {
                 return ResourceManager.GetString("UrlVulnerabilities", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to #vulnerabilities/id:.
         /// </summary>
-        internal static string UrlVulnerabilitiesId
-        {
-            get
-            {
+        internal static string UrlVulnerabilitiesId {
+            get {
                 return ResourceManager.GetString("UrlVulnerabilitiesId", resourceCulture);
             }
         }

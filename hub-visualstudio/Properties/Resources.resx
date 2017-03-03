@@ -180,9 +180,6 @@
   <data name="UrlApiVulnerabilities" xml:space="preserve">
     <value>api/vulnerabilities/</value>
   </data>
-  <data name="UrlProjectsId" xml:space="preserve">
-    <value>#projects/id:</value>
-  </data>
   <data name="UrlVulnerabilities" xml:space="preserve">
     <value>vulnerabilities</value>
   </data>
