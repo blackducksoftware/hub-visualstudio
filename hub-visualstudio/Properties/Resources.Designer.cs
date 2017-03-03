@@ -232,24 +232,6 @@ namespace BlackDuckHub.VisualStudio.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to api/components/.
-        /// </summary>
-        internal static string UrlApiComponents {
-            get {
-                return ResourceManager.GetString("UrlApiComponents", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to api/vulnerabilities/.
-        /// </summary>
-        internal static string UrlApiVulnerabilities {
-            get {
-                return ResourceManager.GetString("UrlApiVulnerabilities", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to vulnerabilities.
         /// </summary>
         internal static string UrlVulnerabilities {

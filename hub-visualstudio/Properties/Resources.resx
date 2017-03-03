@@ -174,12 +174,6 @@
   <data name="StringContentType" xml:space="preserve">
     <value>application/x-www-form-urlencoded</value>
   </data>
-  <data name="UrlApiComponents" xml:space="preserve">
-    <value>api/components/</value>
-  </data>
-  <data name="UrlApiVulnerabilities" xml:space="preserve">
-    <value>api/vulnerabilities/</value>
-  </data>
   <data name="UrlVulnerabilities" xml:space="preserve">
     <value>vulnerabilities</value>
   </data>
