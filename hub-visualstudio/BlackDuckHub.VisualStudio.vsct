@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="GuidHubScanResultsCommandPackage">
+
+    <Buttons>
+      <Button guid="GuidHubScanResultsCommandPackageCmdSet" id="HubScanResultsCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
+        <Icon guid="GuidImages" id="ducky" />
+        <Strings>
+          <ButtonText>Black Duck Hub</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+    <Bitmaps>
+      <Bitmap guid="GuidImages" href="Resources\Ducky-16.png"  usedList="ducky" />
+    </Bitmaps>
+  </Commands>
+
+  <Symbols>
+    <GuidSymbol name="GuidHubScanResultsCommandPackage" value="{3ec47d05-74db-4944-a2e5-af5d09d03e4a}" />
+
+    <GuidSymbol name="GuidHubScanResultsCommandPackageCmdSet" value="{223a30c6-c668-418d-91e9-e5ae84edfd61}">
+      <IDSymbol name="HubScanResultsCommandId" value="0x0100" />
+    </GuidSymbol>
+
+    <GuidSymbol name="GuidImages" value="{f8fdd9bd-78f9-457e-b7fd-36fa515003de}" >
+      <IDSymbol name="ducky" value="1" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="49d412fc-a1c2-4de3-bbc2-3aee2bd008b6" Version="1.0.0" Language="en-US" Publisher="Black Duck Software, Inc." />
+    <DisplayName>Black Duck Hub Extension for Visual Studio</DisplayName>
+    <Description xml:space="preserve">A Visual Studio Extension that exposes Black Duck Hub information for NuGet packages</Description>
+    <MoreInfo>https://github.com/blackducksoftware/hub-visualstudio</MoreInfo>
+    <License>LICENSE.txt</License>
+    <Icon>Resources\Ducky-32.png</Icon>
+    <PreviewImage>Resources\Ducky-200.png</PreviewImage>
+    <Tags>open source;Black Duck;Hub;security;vulnerability</Tags>
+  </Metadata>
+  <Installation AllUsers="true">
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0,15.0]" />
+  </Installation>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+    <Dependency Id="Microsoft.VisualStudio.MPF.14.0" DisplayName="Visual Studio MPF 14.0" d:Source="Installed" Version="[14.0]" />
+  </Dependencies>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+  </Assets>
+</PackageManifest>
