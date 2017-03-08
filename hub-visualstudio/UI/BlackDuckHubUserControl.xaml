@@ -107,34 +107,34 @@
                         <Border Padding="5">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <Border Name="HighVulnBorder" CornerRadius="2,2,2,2" BorderThickness="1" BorderBrush="#9C251F" Margin="0,0,5,0">
-                                    <TextBlock Name="NumHighVulns" Foreground="White" Text="{Binding NumHighVulns}" Background="#9C251F" VerticalAlignment="Center" Padding="10, 0, 10, 0"/>
+                                    <TextBlock Name="NumHighVulns" Foreground="White" Text="{Binding NumHighVulns}" Background="#9C251F" VerticalAlignment="Center" Padding="10, 0, 10, 0" ToolTip="{Binding HighVulnsTooltip}" />
                                 </Border>
                                 <Border Name="MediumVulnBorder" CornerRadius="2,2,2,2" BorderThickness="1" BorderBrush="#E78C87" Margin="0,0,5,0">
-                                    <TextBlock Name="NumMediumVulns" Foreground="White" Text="{Binding NumMediumVulns}" Background="#E78C87" VerticalAlignment="Center" Padding="10, 0, 10, 0" />
+                                    <TextBlock Name="NumMediumVulns" Foreground="White" Text="{Binding NumMediumVulns}" Background="#E78C87" VerticalAlignment="Center" Padding="10, 0, 10, 0" ToolTip="{Binding MediumVulnsTooltip}" />
                                 </Border>
                                 <Border Name="LowVulnBorder" CornerRadius="2,2,2,2" BorderThickness="1" BorderBrush="#999999" Margin="0,0,5,0">
-                                    <TextBlock Name="NumLowVulns" Foreground="White" Text="{Binding NumLowVulns}" Background="#999999" VerticalAlignment="Center" Padding="10, 0, 10, 0" />
+                                    <TextBlock Name="NumLowVulns" Foreground="White" Text="{Binding NumLowVulns}" Background="#999999" VerticalAlignment="Center" Padding="10, 0, 10, 0" ToolTip="{Binding LowVulnsTooltip}" />
                                 </Border>
                             </StackPanel>
                         </Border>
                         <DataTemplate.Triggers>
                             <DataTrigger Binding="{Binding NumHighVulns}" Value="{x:Null}">
-                                <Setter TargetName="NumHighVulns" Property="Background" Value="#F7F7F7" />
+                                <Setter TargetName="NumHighVulns" Property="Background" Value="Transparent" />
                                 <Setter TargetName="NumHighVulns" Property="Text" Value="0" />
-                                <Setter TargetName="NumHighVulns" Property="Foreground" Value="#F7F7F7" />
-                                <Setter TargetName="HighVulnBorder" Property="BorderBrush" Value="#F7F7F7" />
+                                <Setter TargetName="NumHighVulns" Property="Foreground" Value="Transparent" />
+                                <Setter TargetName="HighVulnBorder" Property="BorderBrush" Value="Transparent" />
                             </DataTrigger>
                             <DataTrigger Binding="{Binding NumMediumVulns}" Value="{x:Null}">
-                                <Setter TargetName="NumMediumVulns" Property="Background" Value="#F7F7F7" />
+                                <Setter TargetName="NumMediumVulns" Property="Background" Value="Transparent" />
                                 <Setter TargetName="NumMediumVulns" Property="Text" Value="0" />
-                                <Setter TargetName="NumMediumVulns" Property="Foreground" Value="#F7F7F7" />
-                                <Setter TargetName="MediumVulnBorder" Property="BorderBrush" Value="#F7F7F7" />
+                                <Setter TargetName="NumMediumVulns" Property="Foreground" Value="Transparent" />
+                                <Setter TargetName="MediumVulnBorder" Property="BorderBrush" Value="Transparent" />
                             </DataTrigger>
                             <DataTrigger Binding="{Binding NumLowVulns}" Value="{x:Null}">
-                                <Setter TargetName="NumLowVulns" Property="Background" Value="#F7F7F7" />
+                                <Setter TargetName="NumLowVulns" Property="Background" Value="Transparent" />
                                 <Setter TargetName="NumLowVulns" Property="Text" Value="0" />
-                                <Setter TargetName="NumLowVulns" Property="Foreground" Value="#F7F7F7" />
-                                <Setter TargetName="LowVulnBorder" Property="BorderBrush" Value="#F7F7F7" />
+                                <Setter TargetName="NumLowVulns" Property="Foreground" Value="Transparent" />
+                                <Setter TargetName="LowVulnBorder" Property="BorderBrush" Value="Transparent" />
                             </DataTrigger>
                         </DataTemplate.Triggers>
                     </DataTemplate>

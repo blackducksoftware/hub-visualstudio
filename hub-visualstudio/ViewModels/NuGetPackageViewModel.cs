@@ -26,6 +26,9 @@ namespace BlackDuckHub.VisualStudio.ViewModels
             public string NumHighVulns { get; set; }
             public string NumMediumVulns { get; set; }
             public string NumLowVulns { get; set; }
+            public string HighVulnsTooltip { get; set; }
+            public string MediumVulnsTooltip { get; set; }
+            public string LowVulnsTooltip { get; set; }
             public string PackageLink { get; set; }
             public string LinkText { get; set; }
             public string VsProject { get; set; }

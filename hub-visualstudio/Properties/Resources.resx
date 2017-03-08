@@ -165,8 +165,14 @@
   <data name="PaneTitle" xml:space="preserve">
     <value>Black Duck Hub</value>
   </data>
+  <data name="SeverityTooltip" xml:space="preserve">
+    <value>Severity Vulnerabilities</value>
+  </data>
+  <data name="SeverityTooltipSingle" xml:space="preserve">
+    <value>Severity Vulnerability</value>
+  </data>
   <data name="StatusComplete" xml:space="preserve">
-    <value>Complete</value>
+    <value>Double-click a row to open it in the Hub</value>
   </data>
   <data name="StatusRunning" xml:space="preserve">
     <value>Running...</value>

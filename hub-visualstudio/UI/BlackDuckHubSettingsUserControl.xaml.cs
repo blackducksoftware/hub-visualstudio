@@ -17,7 +17,7 @@ namespace BlackDuckHub.VisualStudio.UI
 
         private void btnTestConnection_Click(object sender, RoutedEventArgs e)
         {
-            var hubSettings = new string[] { txtHubServerUrl.Text, txtHubUsername.Text, txtHubPassword.Password };
+            var hubSettings = new string[] { txtHubServerUrl.Text, txtHubUsername.Text, txtHubPassword.Password, txtHubTimeout.Text };
             if (HubSettingsAssistant.HasHubSettings(hubSettings))
             {
                 var client = Authenticate.EstablishHubSession(hubSettings);

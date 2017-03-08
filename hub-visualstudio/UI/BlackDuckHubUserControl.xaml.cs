@@ -168,7 +168,7 @@ namespace BlackDuckHub.VisualStudio.UI
                     _package.HubServerUrl,
                     _package.HubUsername,
                     _package.HubPassword,
-                    _package.IgnoreSystem.ToString()
+                    _package.HubTimeout
                 };
 
                 if (!_installerServices.GetInstalledPackages().Any()) return;
@@ -208,9 +208,6 @@ namespace BlackDuckHub.VisualStudio.UI
 
                             foreach (var package in packages)
                             {
-                                //Ignore System namespace
-                                if (hubSettings[3] == "True" && package.Id.Contains("System.")) { continue; }
-
                                 var index =
                                     _packagesList.FindIndex(
                                         item => (item.Package == package.Id) && (item.Version == package.VersionString));
@@ -301,9 +298,33 @@ namespace BlackDuckHub.VisualStudio.UI
                                         }
                                     }
 
-                                    item.NumHighVulns = (highVulns > 0) ? highVulns.ToString() : null;
-                                    item.NumMediumVulns = (mediumVulns > 0) ? mediumVulns.ToString() : null;
-                                    item.NumLowVulns = (lowVulns > 0) ? lowVulns.ToString() : null;
+                                    if (highVulns > 0) {
+                                        item.NumHighVulns = highVulns.ToString();
+                                        item.HighVulnsTooltip = (highVulns == 1) ? highVulns.ToString() + " High " + Properties.Resources.SeverityTooltipSingle : highVulns.ToString() + " High " + Properties.Resources.SeverityTooltip;
+                                    }
+                                    else {
+                                        item.NumHighVulns = null;
+                                    }
+
+                                    if (mediumVulns > 0)
+                                    {
+                                        item.NumMediumVulns = mediumVulns.ToString();
+                                        item.MediumVulnsTooltip = (mediumVulns == 1) ? mediumVulns.ToString() + " Medium " + Properties.Resources.SeverityTooltipSingle : mediumVulns.ToString() + " Medium " + Properties.Resources.SeverityTooltip;
+                                    }
+                                    else
+                                    {
+                                        item.NumMediumVulns = null;
+                                    }
+
+                                    if (lowVulns > 0)
+                                    {
+                                        item.NumLowVulns = lowVulns.ToString();
+                                        item.LowVulnsTooltip = (lowVulns == 1) ? lowVulns.ToString() + " Low " + Properties.Resources.SeverityTooltipSingle : lowVulns.ToString() + " Low " + Properties.Resources.SeverityTooltip;
+                                    }
+                                    else
+                                    {
+                                        item.NumLowVulns = null;
+                                    }
 
                                 }
                                 else

@@ -23,7 +23,7 @@ namespace BlackDuckHub.VisualStudio.Helpers
         public static bool HasHubSettings(string[] hubSettings)
         {
             return !string.IsNullOrEmpty(hubSettings[0]) && !string.IsNullOrEmpty(hubSettings[1]) &&
-                   !string.IsNullOrEmpty(hubSettings[2]);
+                   !string.IsNullOrEmpty(hubSettings[2]) && !string.IsNullOrEmpty(hubSettings[3]);
         }
     }
 

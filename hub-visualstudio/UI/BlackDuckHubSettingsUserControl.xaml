@@ -7,15 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Margin="0,0,-108,0">
-        <GroupBox x:Name="grpHubSettings" Header="Black Duck Hub Settings" HorizontalAlignment="Left" Margin="3,6,-10,0" VerticalAlignment="Top" Height="193" Width="415" BorderBrush="#FFACACAC">
-            <CheckBox x:Name="chkIgnoreSystem" Content="Ignore &quot;System&quot; namespace packages" HorizontalAlignment="Left" Margin="87,147,0,0" VerticalAlignment="Top" IsChecked="{Binding IgnoreSystemBool, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <GroupBox x:Name="grpHubSettings" Header="Black Duck Hub Settings" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="216" Width="389" BorderBrush="#FFACACAC">
         </GroupBox>
-        <Button x:Name="btnTestConnection" Content="Test Connection" HorizontalAlignment="Left" Height="23" Margin="97,135,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="0.488,1.035" Click="btnTestConnection_Click"/>
-        <TextBox x:Name="txtHubServerUrl" HorizontalAlignment="Left" Height="23" Margin="97,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" Text="{Binding HubServerUrlString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox x:Name="txtHubUsername" HorizontalAlignment="Left" Height="23" Margin="97,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" Text="{Binding HubUsernameString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <PasswordBox x:Name="txtHubPassword" HorizontalAlignment="Left" Height="23" Margin="97,100,0,0" VerticalAlignment="Top" Width="308" hm:PasswordBoxAssistant.BindPassword="true" hm:PasswordBoxAssistant.BoundPassword="{Binding Path=HubPasswordString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Label x:Name="lblHubServerUrl" Content="Server URL" HorizontalAlignment="Left" Margin="17,28,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblHubUsername" Content="Username" HorizontalAlignment="Left" Margin="17,62,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblHubPassword" Content="Password" HorizontalAlignment="Left" Margin="17,96,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnTestConnection" Content="Test Connection" HorizontalAlignment="Left" Height="23" Margin="123,184,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="0.488,1.035" Click="btnTestConnection_Click"/>
+        <TextBox x:Name="txtHubServerUrl" HorizontalAlignment="Left" Height="23" Margin="123,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="{Binding HubServerUrlString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtHubUsername" HorizontalAlignment="Left" Height="23" Margin="123,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="{Binding HubUsernameString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <PasswordBox x:Name="txtHubPassword" HorizontalAlignment="Left" Height="23" Margin="123,111,0,0" VerticalAlignment="Top" Width="248" hm:PasswordBoxAssistant.BindPassword="true" hm:PasswordBoxAssistant.BoundPassword="{Binding Path=HubPasswordString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtHubTimeout" HorizontalAlignment="Left" Height="23" Margin="123,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="{Binding HubTimeoutString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label x:Name="lblHubServerUrl" Content="Server URL" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblHubUsername" Content="Username" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblHubPassword" Content="Password" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblHubTimeout" Content="Timeout (Seconds)" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

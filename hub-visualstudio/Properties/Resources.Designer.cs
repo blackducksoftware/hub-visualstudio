@@ -205,7 +205,25 @@ namespace BlackDuckHub.VisualStudio.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Complete.
+        ///   Looks up a localized string similar to Severity Vulnerabilities.
+        /// </summary>
+        internal static string SeverityTooltip {
+            get {
+                return ResourceManager.GetString("SeverityTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Severity Vulnerability.
+        /// </summary>
+        internal static string SeverityTooltipSingle {
+            get {
+                return ResourceManager.GetString("SeverityTooltipSingle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Double-click a row to open it in the Hub.
         /// </summary>
         internal static string StatusComplete {
             get {

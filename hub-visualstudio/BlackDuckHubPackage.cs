@@ -40,7 +40,7 @@ namespace BlackDuckHub.VisualStudio
             public string HubServerUrlString { get; set; }
             public string HubUsernameString { get; set; }
             public string HubPasswordString { get; set; }
-            public bool IgnoreSystemBool { get; set; }
+            public string HubTimeoutString { get; set; }
 
             protected override UIElement Child => new HubSettingsUserControl(this);
         }
@@ -72,12 +72,12 @@ namespace BlackDuckHub.VisualStudio
             }
         }
 
-        public bool IgnoreSystem
+        public string HubTimeout
         {
             get
             {
                 var page = (HubSettings)GetDialogPage(typeof(HubSettings));
-                return page.IgnoreSystemBool;
+                return page.HubTimeoutString;
             }
         }
 

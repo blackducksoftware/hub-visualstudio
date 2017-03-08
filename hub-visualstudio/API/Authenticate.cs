@@ -11,6 +11,9 @@ namespace BlackDuckHub.VisualStudio.API
         {
             var client = new RestClient(hubSettings[0]) {CookieContainer = new CookieContainer()};
 
+            if (!String.IsNullOrEmpty(hubSettings[3]))
+                client.Timeout = TimeSpan.FromSeconds(Int32.Parse(hubSettings[3])).Milliseconds;
+
             var authRequest =
                 new RestRequest(Resources.LoginSecurity, Method.POST).AddParameter(
                     "application/x-www-form-urlencoded",
