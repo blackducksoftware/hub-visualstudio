@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,7 +14,6 @@ using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using NuGet.VisualStudio;
-using ComponentVulnerability = BlackDuckHub.VisualStudio.Classes.ComponentVulnerability;
 using Process = System.Diagnostics.Process;
 using Task = System.Threading.Tasks.Task;
 
@@ -344,6 +341,7 @@ namespace BlackDuckHub.VisualStudio.UI
                         _validProjectsList.Sort();
 
                         status = true;
+                        Task.Run(() => CollectData.CallHome(client, hubSettings[0], _dte.Version));
                     }
                 }
             });
@@ -384,5 +382,6 @@ namespace BlackDuckHub.VisualStudio.UI
             }
             dgPackages.Items.Refresh();
         }
+
     }
 }

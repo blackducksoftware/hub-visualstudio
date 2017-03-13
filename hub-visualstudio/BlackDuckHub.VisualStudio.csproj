@@ -55,13 +55,19 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="API\HubVersion.cs" />
+    <Compile Include="API\PhoneHome.cs" />
+    <Compile Include="API\Registration.cs" />
     <Compile Include="Classes\Component.cs" />
     <Compile Include="Classes\ComponentVersion.cs" />
     <Compile Include="Classes\ComponentVulnerability.cs" />
+    <Compile Include="Classes\PhoneHome.cs" />
+    <Compile Include="Classes\Registration.cs" />
     <Compile Include="Commands\BlackDuckHubCommand.cs" />
     <Compile Include="API\ComponentVulnerability.cs" />
     <Compile Include="API\ComponentVersion.cs" />
     <Compile Include="API\Component.cs" />
+    <Compile Include="Helpers\CollectData.cs" />
     <Compile Include="Helpers\SolutionExplorer.cs" />
     <Compile Include="UI\BlackDuckHubPane.cs" />
     <Compile Include="BlackDuckHubPackage.cs" />
