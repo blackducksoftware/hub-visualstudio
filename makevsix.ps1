@@ -11,19 +11,17 @@ if (Test-Path $Release) {
     Remove-Item ("{0}\*{1}" -f $Release, $Extension)
 }
 
- [xml]$XmlDocument = Get-Content -Path $Manifest
+[xml]$XmlDocument = Get-Content -Path $Manifest
 
 $Version = $XmlDocument.PackageManifest.Metadata.Identity.Version
 
 Import-Module -Name $BuildModule
-$buildResult = Invoke-MsBuild -Path $Solution -Params "/target:Clean;Build /property:Configuration=Release;Platform=""Any CPU"";BuildInParallel=true" -Use32BitMsBuild
+$buildResult = Invoke-MsBuild -Path $Solution -Params "/target:Clean;Build /property:Configuration=Release;Platform=""Any CPU"";BuildInParallel=true;DeployExtension=false" -Use32BitMsBuild
 
-if ($buildResult.BuildSucceeded -eq $true)
-{ 
+if ($buildResult.BuildSucceeded -eq $true) { 
     Rename-Item -Path $Vsix -NewName ("{0}-{1}{2}" -f $VsixName, $Version, $Extension)
     Write-Host "VSIX created successfully." 
 }
-elseif (!$buildResult.BuildSucceeded -eq $false)
-{ 
+elseif (!$buildResult.BuildSucceeded -eq $false) { 
     Write-Host "VSIX creation failed. Check the build log file $($buildResult.BuildLogFilePath) for errors."
 }

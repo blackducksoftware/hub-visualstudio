@@ -16,6 +16,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using NuGet.VisualStudio;
 using Process = System.Diagnostics.Process;
 using Task = System.Threading.Tasks.Task;
+using System;
 
 namespace BlackDuckHub.VisualStudio.UI
 {
@@ -106,15 +107,21 @@ namespace BlackDuckHub.VisualStudio.UI
             return VSConstants.S_OK;
         }
 
-        private void DG_Hyperlink_Click(object sender, RoutedEventArgs e)
-        {
-            var link = (Hyperlink)e.OriginalSource;
-            Process.Start(link.NavigateUri.AbsoluteUri);
-        }
-
         private async void btnRunHubScan_Click(object sender, RoutedEventArgs e)
         {
-            await ExecuteHubCommunication();
+            try
+            {
+                await ExecuteHubCommunication();
+            }
+            catch (Exception ex)
+            {
+                tbStatus.Foreground = Brushes.Red;
+                pbStatus.Visibility = Visibility.Hidden;
+                sepStatus.Visibility = Visibility.Hidden;
+                tbStatus.Text = Properties.Resources.MessageError;
+                TaskManager.AddError(Properties.Resources.PaneTitle + ": " + ex.ToString());
+            }
+            
         }
 
         private async Task ExecuteHubCommunication()
@@ -257,7 +264,7 @@ namespace BlackDuckHub.VisualStudio.UI
                                 //Get Security Risk
                                 foreach (var link in getComponentVersionResponse.Data._meta.links)
                                 {
-                                    if (link.rel == Properties.Resources.UrlVulnerabilities)
+                                    if (link.rel == "vulnerabilities")
                                     {
                                         vulnHref = link.href;
                                     }
@@ -348,6 +355,47 @@ namespace BlackDuckHub.VisualStudio.UI
             return status;
         }
 
+        private void dgPackagesRow_DoubleClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //View component version in Hub
+                var package = dgPackages.SelectedItem as NuGetPackageViewModel.NuGetPackage;
+                if (package.HubLink != null)
+                {
+                    Process.Start(package.HubLink);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Properties.Resources.MessageError);
+                TaskManager.AddError(Properties.Resources.PaneTitle + ": " + ex.ToString());
+            }
+        }
+
+        private void cmbProjects_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if ((cmbProjects.SelectedItem != null) && (cmbProjects.SelectedItem.ToString() != Properties.Resources.ItemAll))
+                {
+                    var filteredList =
+                        _packagesList.Where(x => x.VsProject.Contains(cmbProjects.SelectedItem.ToString())).ToList();
+                    dgPackages.ItemsSource = filteredList;
+                }
+                else
+                {
+                    dgPackages.ItemsSource = _packagesList;
+                }
+                dgPackages.Items.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Properties.Resources.MessageError);
+                TaskManager.AddError(Properties.Resources.PaneTitle + ": " + ex.ToString());
+            }
+        }
+
         private void dgPackages_GotFocus(object sender, RoutedEventArgs e)
         {
             dgPackages.Tag = true;
@@ -356,31 +404,6 @@ namespace BlackDuckHub.VisualStudio.UI
         private void dgPackages_LostFocus(object sender, RoutedEventArgs e)
         {
             dgPackages.Tag = false;
-        }
-
-        private void dgPackagesRow_DoubleClick(object sender, RoutedEventArgs e)
-        {
-            //View component version in Hub
-            var package = dgPackages.SelectedItem as NuGetPackageViewModel.NuGetPackage;
-            if (package.HubLink != null)
-            {
-                Process.Start(package.HubLink);
-            }
-        }
-
-        private void cmbProjects_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if ((cmbProjects.SelectedItem != null) && (cmbProjects.SelectedItem.ToString() != Properties.Resources.ItemAll))
-            {
-                var filteredList =
-                    _packagesList.Where(x => x.VsProject.Contains(cmbProjects.SelectedItem.ToString())).ToList();
-                dgPackages.ItemsSource = filteredList;
-            }
-            else
-            {
-                dgPackages.ItemsSource = _packagesList;
-            }
-            dgPackages.Items.Refresh();
         }
 
     }

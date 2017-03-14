@@ -124,15 +124,6 @@ namespace BlackDuckHub.VisualStudio.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to j_spring_security_check.
-        /// </summary>
-        internal static string LoginSecurity {
-            get {
-                return ResourceManager.GetString("LoginSecurity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to username.
         /// </summary>
         internal static string LoginUsername {
@@ -165,6 +156,15 @@ namespace BlackDuckHub.VisualStudio.Properties {
         internal static string MessageConnectionUnsuccessful {
             get {
                 return ResourceManager.GetString("MessageConnectionUnsuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error - view the Error List for more details.
+        /// </summary>
+        internal static string MessageError {
+            get {
+                return ResourceManager.GetString("MessageError", resourceCulture);
             }
         }
         
@@ -241,29 +241,11 @@ namespace BlackDuckHub.VisualStudio.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to application/x-www-form-urlencoded.
+        ///   Looks up a localized string similar to https://collect.blackducksoftware.com.
         /// </summary>
-        internal static string StringContentType {
+        internal static string UrlCollect {
             get {
-                return ResourceManager.GetString("StringContentType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to vulnerabilities.
-        /// </summary>
-        internal static string UrlVulnerabilities {
-            get {
-                return ResourceManager.GetString("UrlVulnerabilities", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to #vulnerabilities/id:.
-        /// </summary>
-        internal static string UrlVulnerabilitiesId {
-            get {
-                return ResourceManager.GetString("UrlVulnerabilitiesId", resourceCulture);
+                return ResourceManager.GetString("UrlCollect", resourceCulture);
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using BlackDuckHub.VisualStudio.API;
 using BlackDuckHub.VisualStudio.Helpers;
+using System;
 
 namespace BlackDuckHub.VisualStudio.UI
 {
@@ -17,17 +18,26 @@ namespace BlackDuckHub.VisualStudio.UI
 
         private void btnTestConnection_Click(object sender, RoutedEventArgs e)
         {
-            var hubSettings = new string[] { txtHubServerUrl.Text, txtHubUsername.Text, txtHubPassword.Password, txtHubTimeout.Text };
-            if (HubSettingsAssistant.HasHubSettings(hubSettings))
+            try
             {
-                var client = Authenticate.EstablishHubSession(hubSettings);
+                var hubSettings = new string[] { txtHubServerUrl.Text, txtHubUsername.Text, txtHubPassword.Password, txtHubTimeout.Text };
+                if (HubSettingsAssistant.HasHubSettings(hubSettings))
+                {
+                    var client = Authenticate.EstablishHubSession(hubSettings);
 
-                MessageBox.Show(client.CookieContainer.Count > 0
-                    ? Properties.Resources.MessageConnectionSuccessful
-                    : Properties.Resources.MessageConnectionUnsuccessful);
+                    MessageBox.Show(client.CookieContainer.Count > 0
+                        ? Properties.Resources.MessageConnectionSuccessful
+                        : Properties.Resources.MessageConnectionUnsuccessful);
+                }
+                else
+                    MessageBox.Show(Properties.Resources.MesageNoHubSettings);
             }
-            else
-                MessageBox.Show(Properties.Resources.MesageNoHubSettings);
+            catch (Exception ex)
+            {
+                MessageBox.Show(Properties.Resources.MessageError);
+                TaskManager.AddError(Properties.Resources.PaneTitle + ": " + ex.ToString());
+            }
+
         }
     }
 }

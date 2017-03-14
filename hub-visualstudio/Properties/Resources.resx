@@ -138,9 +138,6 @@
   <data name="LoginPassword" xml:space="preserve">
     <value>password</value>
   </data>
-  <data name="LoginSecurity" xml:space="preserve">
-    <value>j_spring_security_check</value>
-  </data>
   <data name="LoginUsername" xml:space="preserve">
     <value>username</value>
   </data>
@@ -152,6 +149,9 @@
   </data>
   <data name="MessageConnectionUnsuccessful" xml:space="preserve">
     <value>Could not establish connection to the Black Duck Hub</value>
+  </data>
+  <data name="MessageError" xml:space="preserve">
+    <value>Error - view the Error List for more details</value>
   </data>
   <data name="MessageSettingsSaved" xml:space="preserve">
     <value>Black Duck Hub Settings Saved Successfully</value>
@@ -177,13 +177,7 @@
   <data name="StatusRunning" xml:space="preserve">
     <value>Running...</value>
   </data>
-  <data name="StringContentType" xml:space="preserve">
-    <value>application/x-www-form-urlencoded</value>
-  </data>
-  <data name="UrlVulnerabilities" xml:space="preserve">
-    <value>vulnerabilities</value>
-  </data>
-  <data name="UrlVulnerabilitiesId" xml:space="preserve">
-    <value>#vulnerabilities/id:</value>
+  <data name="UrlCollect" xml:space="preserve">
+    <value>https://collect.blackducksoftware.com</value>
   </data>
 </root>

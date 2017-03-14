@@ -15,7 +15,7 @@ namespace BlackDuckHub.VisualStudio.API
                 client.Timeout = TimeSpan.FromSeconds(Int32.Parse(hubSettings[3])).Milliseconds;
 
             var authRequest =
-                new RestRequest(Resources.LoginSecurity, Method.POST).AddParameter(
+                new RestRequest("j_spring_security_check", Method.POST).AddParameter(
                     "application/x-www-form-urlencoded",
                     $"j_username={hubSettings[1]}&j_password={hubSettings[2]}",
                     ParameterType.RequestBody);

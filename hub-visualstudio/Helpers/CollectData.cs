@@ -52,7 +52,7 @@ namespace BlackDuckHub.VisualStudio.Helpers
 
                 phoneHome.infoMap = infoMap;
 
-                API.PhoneHome.SendPhoneHome(phoneHome);
+                PhoneHome.SendPhoneHome(phoneHome);
 
             }
             catch (Exception ex)

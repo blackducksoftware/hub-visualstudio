@@ -2,12 +2,11 @@
 using System.Runtime.InteropServices;
 using System.Windows;
 using BlackDuckHub.VisualStudio.Commands;
-using BlackDuckHub.VisualStudio.Properties;
 using BlackDuckHub.VisualStudio.Settings;
 using BlackDuckHub.VisualStudio.UI;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-
+using BlackDuckHub.VisualStudio.Helpers;
 
 namespace BlackDuckHub.VisualStudio
 {
@@ -30,7 +29,10 @@ namespace BlackDuckHub.VisualStudio
         protected override void Initialize()
         {
             base.Initialize();
+
             _solutionService = GetService(typeof(SVsSolution)) as IVsSolution;
+
+            TaskManager.Initialize(this);
             BlackDuckHubCommand.Initialize(this);
         }
 
