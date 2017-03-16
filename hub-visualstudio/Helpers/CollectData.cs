@@ -13,7 +13,10 @@ namespace BlackDuckHub.VisualStudio.Helpers
         {
             try
             {
-                var getRegistrationResponse = API.Registration.GetRegistration(client);
+                //Updat timeout for phone home
+                client.Timeout = 5000;
+
+                var getRegistrationResponse = Registration.GetRegistration(client);
 
                 var regId = getRegistrationResponse.Data.registrationId;
 
