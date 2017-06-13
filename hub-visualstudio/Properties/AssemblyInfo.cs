@@ -3,8 +3,8 @@ using System.Resources;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyProduct("Black Duck Hub Extension for Visual Studio")]
-[assembly: AssemblyVersion("1.0.0")]
-[assembly: AssemblyFileVersion("1.0.0")]
+[assembly: AssemblyVersion("1.0.1")]
+[assembly: AssemblyFileVersion("1.0.1")]
 [assembly: ComVisible(false)]
 [assembly: AssemblyCompany("Black Duck Software, Inc.")]
 [assembly: AssemblyCopyright("")]
@@ -16,6 +16,6 @@ namespace System
 {
     internal static class AssemblyVersionInformation
     {
-        internal const string Version = "1.0.0";
+        internal const string Version = "1.0.1";
     }
 }
