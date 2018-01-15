@@ -37,7 +37,23 @@ namespace BlackDuckHub.VisualStudio.API
                 client.DefaultParameters.Add(csrfParam);
             }
 
-            return client;
+            if (response.StatusCode == HttpStatusCode.NoContent)
+            {
+                return client;
+            }
+            else if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                return null;
+            }
+            else if (response.ErrorException != null)
+            {
+                return null;
+            }
+            else
+            {
+                return client;//to be safe, otherwise return the client.
+            }
+
         }
     }
 }

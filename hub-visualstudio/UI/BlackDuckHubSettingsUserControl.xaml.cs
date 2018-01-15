@@ -24,8 +24,8 @@ namespace BlackDuckHub.VisualStudio.UI
                 if (HubSettingsAssistant.HasHubSettings(hubSettings))
                 {
                     var client = Authenticate.EstablishHubSession(hubSettings);
-
-                    MessageBox.Show(client.CookieContainer.Count > 0
+                    
+                    MessageBox.Show(client != null 
                         ? Properties.Resources.MessageConnectionSuccessful
                         : Properties.Resources.MessageConnectionUnsuccessful);
                 }

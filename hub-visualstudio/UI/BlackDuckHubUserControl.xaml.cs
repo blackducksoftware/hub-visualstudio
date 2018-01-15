@@ -185,7 +185,7 @@ namespace BlackDuckHub.VisualStudio.UI
                 {
                     var client = Authenticate.EstablishHubSession(hubSettings);
 
-                    if (client.CookieContainer.Count == 0)
+                    if (client == null)
                     {
                         _riskAnalysisStatus = Properties.Resources.MessageConnectionUnsuccessful;
                         status = false;
