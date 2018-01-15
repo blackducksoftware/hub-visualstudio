@@ -261,6 +261,10 @@ namespace BlackDuckHub.VisualStudio.UI
 
                                 //Obtain license(s)
                                 var licenseList = new List<string>();
+                                if (getComponentVersionResponse.Data.license.licenses.Count == 0)
+                                {
+                                    licenseList.Add(getComponentVersionResponse.Data.license.licenseDisplay);
+                                }
 
                                 foreach (var license in getComponentVersionResponse.Data.license.licenses)
                                 {

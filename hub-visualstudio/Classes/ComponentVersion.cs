@@ -19,6 +19,7 @@ namespace BlackDuckHub.VisualStudio.Classes
 
         public class License
         {
+            public string licenseDisplay { get; set; }
             public string type { get; set; }
             public List<License2> licenses { get; set; }
         }
