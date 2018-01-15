@@ -192,6 +192,7 @@ namespace BlackDuckHub.VisualStudio.UI
                     }
                     else
                     {
+                        String version = HubVersion.GetHubVersionNumberString(client);
                         _packagesList.Clear();
                         _validProjectsList.Clear();
 
@@ -241,7 +242,16 @@ namespace BlackDuckHub.VisualStudio.UI
                                 (getComponentResponse.Data.items[0].version != null))
                             {
                                 var versionId = getComponentResponse.Data.items[0].version.Substring(getComponentResponse.Data.items[0].version.LastIndexOf("/") + 1);
-                                item.HubLink = _package.HubServerUrl + "/#versions/id:" + versionId + "/view:overview";
+
+                                if (int.Parse(version.Split('.')[0]) < 4)
+                                {
+                                    item.HubLink = _package.HubServerUrl + "/#versions/id:" + versionId + "/view:overview";
+                                }
+                                else
+                                {
+                                    item.HubLink = _package.HubServerUrl + "/ui/versions/id:" + versionId + "/view:overview";
+                                }
+
 
                                 var getComponentVersionResponse =
                                     ComponentVersion.GetComponentVersion(getComponentResponse, _package.HubServerUrl,

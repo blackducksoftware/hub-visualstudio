@@ -46,7 +46,7 @@ namespace BlackDuckHub.VisualStudio.Helpers
                 Classes.PhoneHome.InfoMap infoMap = new Classes.PhoneHome.InfoMap();
 
                 infoMap.blackDuckName = "Hub";
-                infoMap.blackDuckVersion = HubVersion.GetHubVersion(client).Replace('"', ' ').Trim(); ;
+                infoMap.blackDuckVersion = HubVersion.GetHubVersionNumberString(client);
                 infoMap.thirdPartyName = "Visual-Studio";
                 infoMap.thirdPartyVersion = hubVersion;
                 infoMap.pluginVersion = Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." +

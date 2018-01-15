@@ -10,5 +10,10 @@ namespace BlackDuckHub.VisualStudio.API
             client.Timeout = 5000;
             return client.Execute(getHubVersion).Content;
         }
+
+        public static string GetHubVersionNumberString(RestClient client)
+        {
+            return GetHubVersion(client).Replace("\"", "").Trim();
+        }
     }
 }
