@@ -44,6 +44,11 @@ namespace BlackDuckHub.VisualStudio
             public string HubPasswordString { get; set; }
             public string HubTimeoutString { get; set; }
 
+            public string ProxyPortString { get; set; }
+            public string ProxyHostString { get; set; }
+            public string ProxyUsernameString { get; set; }
+            public string ProxyPasswordString { get; set; }
+
             protected override UIElement Child => new HubSettingsUserControl(this);
         }
 
@@ -83,5 +88,40 @@ namespace BlackDuckHub.VisualStudio
             }
         }
 
+        public string ProxyPort
+        {
+            get
+            {
+                var page = (HubSettings)GetDialogPage(typeof(HubSettings));
+                return page.ProxyPortString;
+            }
+        }
+
+        public string ProxyHost
+        {
+            get
+            {
+                var page = (HubSettings)GetDialogPage(typeof(HubSettings));
+                return page.ProxyHostString;
+            }
+        }
+
+        public string ProxyUsername
+        {
+            get
+            {
+                var page = (HubSettings)GetDialogPage(typeof(HubSettings));
+                return page.ProxyUsernameString;
+            }
+        }
+
+        public string ProxyPassword
+        {
+            get
+            {
+                var page = (HubSettings)GetDialogPage(typeof(HubSettings));
+                return page.ProxyPasswordString;
+            }
+        }
     }
 }

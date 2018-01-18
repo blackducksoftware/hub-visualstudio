@@ -61,6 +61,7 @@
     <Compile Include="Classes\Component.cs" />
     <Compile Include="Classes\ComponentVersion.cs" />
     <Compile Include="Classes\ComponentVulnerability.cs" />
+    <Compile Include="Classes\HubSettings.cs" />
     <Compile Include="Classes\PhoneHome.cs" />
     <Compile Include="Classes\Registration.cs" />
     <Compile Include="Commands\BlackDuckHubCommand.cs" />

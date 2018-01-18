@@ -2,6 +2,7 @@
 using BlackDuckHub.VisualStudio.API;
 using BlackDuckHub.VisualStudio.Helpers;
 using System;
+using BlackDuckHub.VisualStudio.Classes;
 
 namespace BlackDuckHub.VisualStudio.UI
 {
@@ -20,7 +21,19 @@ namespace BlackDuckHub.VisualStudio.UI
         {
             try
             {
-                var hubSettings = new string[] { txtHubServerUrl.Text, txtHubUsername.Text, txtHubPassword.Password, txtHubTimeout.Text };
+                var hubSettings = new HubSettings()
+                {
+                    ServerUrl = txtHubServerUrl.Text,
+                    Username = txtHubUsername.Text,
+                    Password = txtHubPassword.Password,
+                    Timeout = txtHubTimeout.Text,
+
+                    ProxyHost = txtProxyHost.Text,
+                    ProxyPort = txtProxyPort.Text,
+                    ProxyUsername = txtProxyUsername.Text,
+                    ProxyPassword = txtProxyPassword.Password
+                };
+
                 if (HubSettingsAssistant.HasHubSettings(hubSettings))
                 {
                     var client = Authenticate.EstablishHubSession(hubSettings);
@@ -32,7 +45,7 @@ namespace BlackDuckHub.VisualStudio.UI
                 else
                     MessageBox.Show(Properties.Resources.MesageNoHubSettings);
             }
-            catch (Exception ex)
+             catch (Exception ex)
             {
                 MessageBox.Show(Properties.Resources.MessageError);
                 TaskManager.AddError(Properties.Resources.PaneTitle + ": " + ex.ToString());

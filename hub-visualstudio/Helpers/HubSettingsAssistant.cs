@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using BlackDuckHub.VisualStudio.Classes;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 
@@ -20,10 +21,10 @@ namespace BlackDuckHub.VisualStudio.Helpers
             }
         }
 
-        public static bool HasHubSettings(string[] hubSettings)
+        public static bool HasHubSettings(HubSettings hubSettings)
         {
-            return !string.IsNullOrEmpty(hubSettings[0]) && !string.IsNullOrEmpty(hubSettings[1]) &&
-                   !string.IsNullOrEmpty(hubSettings[2]) && !string.IsNullOrEmpty(hubSettings[3]);
+            return !string.IsNullOrEmpty(hubSettings.ServerUrl) && !string.IsNullOrEmpty(hubSettings.Password) &&
+                   !string.IsNullOrEmpty(hubSettings.Username) && !string.IsNullOrEmpty(hubSettings.Timeout);
         }
     }
 

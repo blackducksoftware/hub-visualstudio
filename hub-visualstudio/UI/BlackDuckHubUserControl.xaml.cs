@@ -17,6 +17,7 @@ using NuGet.VisualStudio;
 using Process = System.Diagnostics.Process;
 using Task = System.Threading.Tasks.Task;
 using System;
+using BlackDuckHub.VisualStudio.Classes;
 
 namespace BlackDuckHub.VisualStudio.UI
 {
@@ -167,12 +168,16 @@ namespace BlackDuckHub.VisualStudio.UI
             var status = false;
             await Task.Run(() =>
             {
-                var hubSettings = new[]
+                var hubSettings = new HubSettings()
                 {
-                    _package.HubServerUrl,
-                    _package.HubUsername,
-                    _package.HubPassword,
-                    _package.HubTimeout
+                    ServerUrl = _package.HubServerUrl,
+                    Username = _package.HubUsername,
+                    Password =_package.HubPassword,
+                    Timeout = _package.HubTimeout,
+                    ProxyHost = _package.ProxyHost,
+                    ProxyPort = _package.ProxyPort,
+                    ProxyUsername = _package.ProxyUsername,
+                    ProxyPassword = _package.ProxyPassword
                 };
 
                 if (!_installerServices.GetInstalledPackages().Any()) return;
@@ -235,7 +240,7 @@ namespace BlackDuckHub.VisualStudio.UI
                             var externalId = $"{item.Forge}|{item.Package}|{item.Version}";
 
                             //Get Component
-                            var getComponentResponse = Component.GetComponent(externalId, client);
+                            var getComponentResponse = API.Component.GetComponent(externalId, client);
 
                             //Get Component Version
                             if ((getComponentResponse.Data.items?.Count == 1) &&
@@ -254,7 +259,7 @@ namespace BlackDuckHub.VisualStudio.UI
 
 
                                 var getComponentVersionResponse =
-                                    ComponentVersion.GetComponentVersion(getComponentResponse, _package.HubServerUrl,
+                                    API.ComponentVersion.GetComponentVersion(getComponentResponse, _package.HubServerUrl,
                                         client);
 
                                 var vulnHref = "";
@@ -362,7 +367,7 @@ namespace BlackDuckHub.VisualStudio.UI
                         _validProjectsList.Sort();
 
                         status = true;
-                        Task.Run(() => CollectData.CallHome(client, hubSettings[0], _dte.Version));
+                        Task.Run(() => CollectData.CallHome(client, hubSettings.ServerUrl, _dte.Version));
                     }
                 }
             });
