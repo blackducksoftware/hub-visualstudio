@@ -34,7 +34,7 @@ namespace BlackDuckHub.VisualStudio.UI
                     ProxyPassword = txtProxyPassword.Password
                 };
 
-                if (HubSettingsAssistant.HasHubSettings(hubSettings))
+                if (hubSettings.HasSettings())
                 {
                     var client = Authenticate.EstablishHubSession(hubSettings);
                     

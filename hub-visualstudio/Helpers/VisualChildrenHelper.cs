@@ -5,7 +5,7 @@ using System.Windows.Media;
 
 namespace BlackDuckHub.VisualStudio.Helpers
 {
-    public static class HubSettingsAssistant
+    public static class VisualChildrenHelper
     {
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
@@ -21,11 +21,7 @@ namespace BlackDuckHub.VisualStudio.Helpers
             }
         }
 
-        public static bool HasHubSettings(HubSettings hubSettings)
-        {
-            return !string.IsNullOrEmpty(hubSettings.ServerUrl) && !string.IsNullOrEmpty(hubSettings.Password) &&
-                   !string.IsNullOrEmpty(hubSettings.Username) && !string.IsNullOrEmpty(hubSettings.Timeout);
-        }
+        
     }
 
 }

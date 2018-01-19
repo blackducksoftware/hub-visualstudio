@@ -5,33 +5,35 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:hm="clr-namespace:BlackDuckHub.VisualStudio.Helpers"
              mc:Ignorable="d" Width="389.083" Height="362.62">
-    <Grid Margin="0,0,-108,10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="56*"/>
-            <ColumnDefinition Width="15*"/>
-        </Grid.ColumnDefinitions>
-        <GroupBox x:Name="grpHubSettings" Header="Black Duck Hub Settings" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="340" Width="389" BorderBrush="#FFACACAC">
-        </GroupBox>
-        <Button x:Name="btnTestConnection" Content="Test Connection" HorizontalAlignment="Left" Height="23" Margin="123,321,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="0.488,1.035" Click="btnTestConnection_Click"/>
-        <TextBox x:Name="txtHubServerUrl" HorizontalAlignment="Left" Height="23" Margin="123,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="{Binding HubServerUrlString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox x:Name="txtHubUsername" HorizontalAlignment="Left" Height="23" Margin="123,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="{Binding HubUsernameString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <PasswordBox x:Name="txtHubPassword" HorizontalAlignment="Left" Height="23" Margin="123,111,0,0" VerticalAlignment="Top" Width="248" hm:PasswordBoxAssistant.BindPassword="true" hm:PasswordBoxAssistant.BoundPassword="{Binding Path=HubPasswordString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox x:Name="txtHubTimeout" HorizontalAlignment="Left" Height="23" Margin="123,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="{Binding HubTimeoutString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    <ScrollViewer>
+        <Grid Margin="0,0,-108,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="65*"/>
+                <ColumnDefinition Width="15*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox x:Name="grpHubSettings" Header="Black Duck Hub Settings" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="340" Width="389" BorderBrush="#FFACACAC">
+            </GroupBox>
+            <Button x:Name="btnTestConnection" Content="Test Connection" HorizontalAlignment="Left" Height="23" Margin="123,321,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="0.488,1.035" Click="btnTestConnection_Click"/>
+            <TextBox x:Name="txtHubServerUrl" HorizontalAlignment="Left" Height="23" Margin="123,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="{Binding HubServerUrlString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="txtHubUsername" HorizontalAlignment="Left" Height="23" Margin="123,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="{Binding HubUsernameString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <PasswordBox x:Name="txtHubPassword" HorizontalAlignment="Left" Height="23" Margin="123,111,0,0" VerticalAlignment="Top" Width="248" hm:PasswordBoxAssistant.BindPassword="true" hm:PasswordBoxAssistant.BoundPassword="{Binding Path=HubPasswordString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="txtHubTimeout" HorizontalAlignment="Left" Height="23" Margin="123,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="{Binding HubTimeoutString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <TextBox x:Name="txtProxyHost" HorizontalAlignment="Left" Height="23" Margin="123,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="{Binding ProxyHostString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox x:Name="txtProxyPort" HorizontalAlignment="Left" Height="23" Margin="123,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="{Binding ProxyPortString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox x:Name="txtProxyUsername" HorizontalAlignment="Left" Height="23" Margin="123,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="{Binding ProxyUsernameString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <PasswordBox x:Name="txtProxyPassword" HorizontalAlignment="Left" Height="23" Margin="123,286,0,0" VerticalAlignment="Top" Width="248" hm:PasswordBoxAssistant.BindPassword="true" hm:PasswordBoxAssistant.BoundPassword="{Binding Path=ProxyPasswordString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="txtProxyHost" HorizontalAlignment="Left" Height="23" Margin="123,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="{Binding ProxyHostString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="txtProxyPort" HorizontalAlignment="Left" Height="23" Margin="123,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="{Binding ProxyPortString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="txtProxyUsername" HorizontalAlignment="Left" Height="23" Margin="123,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="{Binding ProxyUsernameString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <PasswordBox x:Name="txtProxyPassword" HorizontalAlignment="Left" Height="23" Margin="123,286,0,0" VerticalAlignment="Top" Width="248" hm:PasswordBoxAssistant.BindPassword="true" hm:PasswordBoxAssistant.BoundPassword="{Binding Path=ProxyPasswordString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Label x:Name="lblHubServerUrl" Content="Server URL" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="26" Width="67"/>
-        <Label x:Name="lblHubUsername" Content="Username" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Height="26" Width="63"/>
-        <Label x:Name="lblHubPassword" Content="Password" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="26" Width="60"/>
-        <Label x:Name="lblHubTimeout" Content="Timeout (Seconds)" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" Height="26" Width="108"/>
+            <Label x:Name="lblHubServerUrl" Content="Server URL" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="26" Width="67"/>
+            <Label x:Name="lblHubUsername" Content="Username" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Height="26" Width="63"/>
+            <Label x:Name="lblHubPassword" Content="Password" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="26" Width="60"/>
+            <Label x:Name="lblHubTimeout" Content="Timeout (Seconds)" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" Height="26" Width="112"/>
 
-        <Label x:Name="lblProxyHost" Content="Proxy Host" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Height="26" Width="67"/>
-        <Label x:Name="lblProxyPort" Content="Proxy Port" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Height="26" Width="64"/>
-        <Label x:Name="lblProxyUsername" Content="Proxy Username" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top" Height="26" Width="96"/>
-        <Label x:Name="lblProxyPassword" Content="Proxy Password" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top" Height="26" Width="92"/>
+            <Label x:Name="lblProxyHost" Content="Proxy Host" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Height="26" Width="67"/>
+            <Label x:Name="lblProxyPort" Content="Proxy Port" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Height="26" Width="64"/>
+            <Label x:Name="lblProxyUsername" Content="Proxy Username" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top" Height="26" Width="96"/>
+            <Label x:Name="lblProxyPassword" Content="Proxy Password" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top" Height="26" Width="92"/>
 
-    </Grid>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

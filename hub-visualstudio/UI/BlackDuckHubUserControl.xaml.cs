@@ -181,7 +181,7 @@ namespace BlackDuckHub.VisualStudio.UI
                 };
 
                 if (!_installerServices.GetInstalledPackages().Any()) return;
-                if (!HubSettingsAssistant.HasHubSettings(hubSettings))
+                if (!hubSettings.HasSettings())
                 {
                     _riskAnalysisStatus = Properties.Resources.MesageNoHubSettings;
                     status = false;

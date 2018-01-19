@@ -17,5 +17,11 @@ namespace BlackDuckHub.VisualStudio.Classes
         public string ProxyPort { get; set; }
         public string ProxyUsername { get; set; }
         public string ProxyPassword { get; set; }
+
+        public bool HasSettings()
+        {
+            return !string.IsNullOrEmpty(ServerUrl) && !string.IsNullOrEmpty(Password) &&
+                   !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Timeout);
+        }
     }
 }
