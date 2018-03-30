@@ -198,6 +198,7 @@ namespace BlackDuckHub.VisualStudio.UI
                     else
                     {
                         String version = HubVersion.GetHubVersionNumberString(client);
+                        bool hubLessThanFour = int.Parse(version.Split('.')[0]) < 4;
                         _packagesList.Clear();
                         _validProjectsList.Clear();
 
@@ -237,127 +238,13 @@ namespace BlackDuckHub.VisualStudio.UI
 
                         foreach (var item in _packagesList)
                         {
-                            var externalId = $"{item.Forge}|{item.Package}|{item.Version}";
-
-                            //Get Component
-                            var getComponentResponse = API.Component.GetComponent(externalId, client);
-
-                            //Get Component Version
-                            if ((getComponentResponse.Data.items?.Count == 1) &&
-                                (getComponentResponse.Data.items[0].version != null))
+                            try
                             {
-                                var versionId = getComponentResponse.Data.items[0].version.Substring(getComponentResponse.Data.items[0].version.LastIndexOf("/") + 1);
-
-                                if (int.Parse(version.Split('.')[0]) < 4)
-                                {
-                                    item.HubLink = _package.HubServerUrl + "/#versions/id:" + versionId + "/view:overview";
-                                }
-                                else
-                                {
-                                    item.HubLink = _package.HubServerUrl + "/ui/versions/id:" + versionId + "/view:overview";
-                                }
-
-
-                                var getComponentVersionResponse =
-                                    API.ComponentVersion.GetComponentVersion(getComponentResponse, _package.HubServerUrl,
-                                        client);
-
-                                var vulnHref = "";
-
-                                //Obtain license(s)
-                                var licenseList = new List<string>();
-                                if (getComponentVersionResponse.Data.license.licenses.Count == 0)
-                                {
-                                    licenseList.Add(getComponentVersionResponse.Data.license.licenseDisplay);
-                                }
-
-                                foreach (var license in getComponentVersionResponse.Data.license.licenses)
-                                {
-                                    licenseList.Add(license.name);
-                                }
-
-                                var licenses = string.Join(",", licenseList);
-
-                                item.License = licenses;
-
-                                //Get Security Risk
-                                foreach (var link in getComponentVersionResponse.Data._meta.links)
-                                {
-                                    if (link.rel == "vulnerabilities")
-                                    {
-                                        vulnHref = link.href;
-                                    }
-                                }
-
-                                if (vulnHref == null) continue;
-
-                                var getVulnerabilitiesResponse =
-                                    API.ComponentVulnerability.GetVulnerabilities(getComponentVersionResponse,
-                                        _package.HubServerUrl, client, vulnHref);
-
-                                if (getVulnerabilitiesResponse.Data.totalCount != 0)
-                                {
-                                    item.PackageStatus = NuGetPackageViewModel.PackageStatus.Vulnerable;
-
-                                    var highVulns = 0;
-                                    var mediumVulns = 0;
-                                    var lowVulns = 0;
-
-                                    foreach (var vuln in getVulnerabilitiesResponse.Data.items)
-                                    {
-                                        var vulnLink = vuln._meta.href;
-
-                                        switch (vuln.severity)
-                                        {
-                                            case "HIGH":
-                                                highVulns++;
-                                                break;
-                                            case "MEDIUM":
-                                                mediumVulns++;
-                                                break;
-                                            default:
-                                                lowVulns++;
-                                                break;
-                                        }
-                                    }
-
-                                    if (highVulns > 0) {
-                                        item.NumHighVulns = highVulns.ToString();
-                                        item.HighVulnsTooltip = (highVulns == 1) ? highVulns.ToString() + " High " + Properties.Resources.SeverityTooltipSingle : highVulns.ToString() + " High " + Properties.Resources.SeverityTooltip;
-                                    }
-                                    else {
-                                        item.NumHighVulns = null;
-                                    }
-
-                                    if (mediumVulns > 0)
-                                    {
-                                        item.NumMediumVulns = mediumVulns.ToString();
-                                        item.MediumVulnsTooltip = (mediumVulns == 1) ? mediumVulns.ToString() + " Medium " + Properties.Resources.SeverityTooltipSingle : mediumVulns.ToString() + " Medium " + Properties.Resources.SeverityTooltip;
-                                    }
-                                    else
-                                    {
-                                        item.NumMediumVulns = null;
-                                    }
-
-                                    if (lowVulns > 0)
-                                    {
-                                        item.NumLowVulns = lowVulns.ToString();
-                                        item.LowVulnsTooltip = (lowVulns == 1) ? lowVulns.ToString() + " Low " + Properties.Resources.SeverityTooltipSingle : lowVulns.ToString() + " Low " + Properties.Resources.SeverityTooltip;
-                                    }
-                                    else
-                                    {
-                                        item.NumLowVulns = null;
-                                    }
-
-                                }
-                                else
-                                {
-                                    item.PackageStatus = NuGetPackageViewModel.PackageStatus.Secure;
-                                }
-                            }
-                            else
+                                ProcessItem(item, client, hubLessThanFour);
+                            } catch (Exception e)
                             {
-                                item.PackageStatus = NuGetPackageViewModel.PackageStatus.NotFound;
+                                _riskAnalysisStatus = e.Message;
+                                status = false;
                             }
                         }
 
@@ -372,6 +259,156 @@ namespace BlackDuckHub.VisualStudio.UI
                 }
             });
             return status;
+        }
+
+
+        private void ProcessItem(NuGetPackageViewModel.NuGetPackage item, RestSharp.RestClient client, Boolean hubLessThanFour)
+        {
+            var externalId = $"{item.Forge}|{item.Package}|{item.Version}";
+
+            //Get Component
+            var getComponentResponse = API.Component.GetComponent(externalId, client);
+            var component = getComponentResponse.Data;
+
+            if (component == null) return; 
+            //Get Component Version
+            if ((component.items?.Count == 1) &&
+                (component.items[0].version != null))
+            {
+                var versionId = component.items[0].version.Substring(component.items[0].version.LastIndexOf("/") + 1);
+
+                if (hubLessThanFour)
+                {
+                    item.HubLink = _package.HubServerUrl + "/#versions/id:" + versionId + "/view:overview";
+                }
+                else
+                {
+                    item.HubLink = _package.HubServerUrl + "/ui/versions/id:" + versionId + "/view:overview";
+                }
+
+
+                var getComponentVersionResponse =
+                    API.ComponentVersion.GetComponentVersion(getComponentResponse, _package.HubServerUrl,
+                        client);
+
+                var componentVersion = getComponentVersionResponse.Data;
+
+                PopulateLicenses(item, componentVersion);
+
+
+                var vulnHref = GetSecurityRiskUrl(componentVersion);
+
+                if (vulnHref == null) return;
+
+                var getVulnerabilitiesResponse =
+                    API.ComponentVulnerability.GetVulnerabilities(getComponentVersionResponse,
+                        _package.HubServerUrl, client, vulnHref);
+
+                var componentVulnerability = getVulnerabilitiesResponse.Data;
+
+                if (componentVulnerability.totalCount != 0)
+                {
+                    PopulateVulns(item, componentVulnerability.items);
+                }
+                else
+                {
+                    item.PackageStatus = NuGetPackageViewModel.PackageStatus.Secure;
+                }
+            }
+            else
+            {
+                item.PackageStatus = NuGetPackageViewModel.PackageStatus.NotFound;
+            }
+        }
+
+        private String GetSecurityRiskUrl(Classes.ComponentVersion.RootObject componentVersion)
+        {
+            var vulnHref = "";
+
+            foreach (var link in componentVersion._meta.links)
+            {
+                if (link.rel == "vulnerabilities")
+                {
+                    vulnHref = link.href;
+                }
+            }
+
+            return vulnHref;
+        }
+
+        private void PopulateLicenses(NuGetPackageViewModel.NuGetPackage item, Classes.ComponentVersion.RootObject componentVersion)
+        {
+            var licenseList = new List<string>();
+            if (componentVersion.license.licenses.Count == 0)
+            {
+                licenseList.Add(componentVersion.license.licenseDisplay);
+            }
+
+            foreach (var license in componentVersion.license.licenses)
+            {
+                licenseList.Add(license.name);
+            }
+
+            var licenses = string.Join(",", licenseList);
+
+            item.License = licenses;
+        }
+
+        private void PopulateVulns(NuGetPackageViewModel.NuGetPackage item, List<Classes.ComponentVulnerability.Item> items)
+        {
+            item.PackageStatus = NuGetPackageViewModel.PackageStatus.Vulnerable;
+
+            var highVulns = 0;
+            var mediumVulns = 0;
+            var lowVulns = 0;
+
+            foreach (var vuln in items)
+            {
+                var vulnLink = vuln._meta.href;
+
+                switch (vuln.severity)
+                {
+                    case "HIGH":
+                        highVulns++;
+                        break;
+                    case "MEDIUM":
+                        mediumVulns++;
+                        break;
+                    default:
+                        lowVulns++;
+                        break;
+                }
+            }
+
+            if (highVulns > 0)
+            {
+                item.NumHighVulns = highVulns.ToString();
+                item.HighVulnsTooltip = (highVulns == 1) ? highVulns.ToString() + " High " + Properties.Resources.SeverityTooltipSingle : highVulns.ToString() + " High " + Properties.Resources.SeverityTooltip;
+            }
+            else
+            {
+                item.NumHighVulns = null;
+            }
+
+            if (mediumVulns > 0)
+            {
+                item.NumMediumVulns = mediumVulns.ToString();
+                item.MediumVulnsTooltip = (mediumVulns == 1) ? mediumVulns.ToString() + " Medium " + Properties.Resources.SeverityTooltipSingle : mediumVulns.ToString() + " Medium " + Properties.Resources.SeverityTooltip;
+            }
+            else
+            {
+                item.NumMediumVulns = null;
+            }
+
+            if (lowVulns > 0)
+            {
+                item.NumLowVulns = lowVulns.ToString();
+                item.LowVulnsTooltip = (lowVulns == 1) ? lowVulns.ToString() + " Low " + Properties.Resources.SeverityTooltipSingle : lowVulns.ToString() + " Low " + Properties.Resources.SeverityTooltip;
+            }
+            else
+            {
+                item.NumLowVulns = null;
+            }
         }
 
         private void dgPackagesRow_DoubleClick(object sender, RoutedEventArgs e)
